@@ -8,3 +8,10 @@ export default function App() {
     </main>
   );
 }
+
+import JobsList from './pages/JobsList';
+
+export default function App() {
+  return <JobsList />;
+}
+

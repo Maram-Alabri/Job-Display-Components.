@@ -77,18 +77,18 @@ export default function JobsList() {
 
       {state.status === "error" && (
         <div className="error">
-          <p>حدث خطأ أثناء جلب الوظائف: {state.error}</p>
+          <p>Error: {state.error}</p>
           <button onClick={() => {
             dispatch({ type: "LOAD_START" });
             fetchJobs()
               .then(data => dispatch({ type: "LOAD_SUCCESS", payload: data }))
               .catch(err => dispatch({ type: "LOAD_ERROR", error: err.message || "Failed" }));
-          }}>إعادة المحاولة</button>
+          }}>Retry</button>
         </div>
       )}
 
       {state.status === "success" && filtered.length === 0 && (
-        <p className="muted">لا توجد وظائف مطابقة لبحثك.</p>
+        <p className="muted">No jobs matching yout search</p>
       )}
 
       {state.status === "success" && filtered.length > 0 && (
